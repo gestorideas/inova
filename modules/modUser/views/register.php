@@ -42,7 +42,7 @@
                         echo '<div class="alert alert-info">The fields with character * are mandatory</div>';
                     }
                     ?>
-
+                    <div id="mensaje6" class="alert alert-danger">You need to accept the contract</div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -124,7 +124,6 @@
 
 
 
-
                     <input type="submit" class="btn btn-primary btn-md login" value="REGISTER" id="register"/>
                     <p class="forgotpass"><a href="login.php" class="small">Cancel</a></p>
 
@@ -134,7 +133,7 @@
                 <li class="list-group-item">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" value="">
+                            <input type="checkbox" value="" id="checkcontract">
                             I agree with the terms of the community (<a href="#">contract</a>)
                         </label>
                     </div>

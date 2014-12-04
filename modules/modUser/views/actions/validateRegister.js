@@ -7,6 +7,7 @@ $(document).ready(function () {
     $("#mensaje3").fadeOut();
     $("#mensaje4").fadeOut();
     $("#mensaje5").fadeOut();
+    $("#mensaje6").fadeOut();
     $("#register").click(function (){
         var username = $("#username").val();
         var nombre = $("#name").val();
@@ -14,6 +15,12 @@ $(document).ready(function () {
         var correo = $("#exampleInputEmail1").val();
         var passw = $("#exampleInputPassword1").val();
         var repass = $("#passwordConfirmation").val();
+        var check = $("#checkcontract")
+
+        if (!check.is(":checked")){
+            $("#mensaje6").fadeIn("slow");
+            return false;
+        }
 
         if( username == "" ){
             $("#mensaje0").fadeIn("slow");
@@ -65,6 +72,13 @@ $(document).ready(function () {
 
 
 
+    });
+
+    $("#checkcontract").keyup(function(){
+        if( !$(this).is(":checked")){
+            $("#mensaje0").fadeOut();
+            return false;
+        }
     });
 
     $("#username").keyup(function(){
