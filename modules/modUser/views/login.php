@@ -69,8 +69,9 @@
                         <div class="input-group">
                             <input type="submit" class="btn btn-primary btn-md login" value="LOG IN"/>
                         </div>
-
+                        <!--
                         <p class="forgotpass"><a href="#" class="small">Forgot Password?</a></p>
+                        -->
                     </form>
 
 
