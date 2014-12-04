@@ -1,0 +1,171 @@
+use inova
+db.ideas.insert (
+    {
+        ididea: "576f1e3b10abb02630a004ea2df18620",
+        author: "cf3c3ed024332dbe4be0f565be4456d2",
+        authorname: "Britney Winslet",
+        title:  "Healthcare Consulting",
+        tags:   [
+                 "Consulting,",
+                 "Healthcare"
+                ],
+        description: "The combination of aging baby boomers and the upcoming changes of the Affordable Care Act means that the healthcare industry will rapidly continue to expand. As an independent healthcare consultant, you can offer management and data analysis for organizations like hospitals, labs and therapist offices to help implement solutions to improve efficiency and/or save money. This is a great opportunity to put that marketing or economics degree to use.",
+        date: "24-09-2014 23:41:16",
+        votes: "100",
+        comments: [
+                    {
+                        commentedby: "",
+                        comment: ""
+                    }
+                  ]
+    }
+);
+
+db.ideas.insert (
+    {
+        ididea: "a16c326e4879a7ad0f2fa1010e9bd698",
+        author: "9cc00cf99cce083860761823ff41589f",
+        authorname: "Fintan Duggan",
+        title:  "Food Truck",
+        tags:   [
+                 "Food,",
+                 "Truck,",
+                 "Fast food"
+                ],
+        description: "We included this on our list of business ideas for foodies, and for good reason: a December 2012 study by Intuit and Emergent Research predicted that revenue from the food truck industry will reach $2.7 billion by 2017. A truck is a much less expensive investment than a brick-and-mortar restaurant and, according to Mobi Munch founder Josh Tang, the failure rate for food trucks is just 10 to 20 percent (as opposed to 60 to 90 percent for restaurants). With the right equipment and some great recipes, you can have your mobile eatery up and running in no time.",
+        date: "08-01-2014 09:41:14",
+        votes: "350",
+        comments: [
+                    {
+                        commentedby: "",
+                        comment: ""
+                    }
+                  ]
+    }
+);
+
+db.ideas.insert (
+    {
+        ididea: "89e44509ade310f0dc859b1135334614",
+        author: "0fd49869519548978718ccc4b96b3cca",
+        authorname: "John Cris Larang",
+        title:  "Freelancing",
+        tags:   [
+                 "freelance,",
+                 "business,",
+                 "staff,",
+                 "companies"
+                ],
+        description: "Companies are increasingly turning to freelance and contract workers to fill the skill gaps in their staff. It's not hard to imagine that you could build a whole company around providing freelance services of one sort or another. According to Freelancer.com, which lists more than a million freelance projects on its site, the most in-demand freelance services are: data entry, academic writing, Excel projects, data processing, Web search and Facebook-based jobs. Hourly rates start at $30 an hour and stretch into the hundreds.",
+        date: "01-04-2014 13:24:47",
+        votes: "400",
+        comments: [
+                    {
+                        commentedby: "",
+                        comment: ""
+                    }
+                  ]
+    }
+);
+
+db.ideas.insert (
+    {
+        ididea: "064f3695ba51eb9ad5ade89fb785487f",
+        author: "815c6f283e6d2137d31b7607c4e20cca",
+        authorname: "Petra Hartlova",
+        title:  "Mobile consulting",
+        tags:   [
+                 "Mobile,",
+                 "business,"
+                 "consulting"
+                ],
+        description: "It's been said before, but it bears repeating: mobile is now a non-negotiable for almost any business. Finding ways to go mobile is a challenge for many business owners. If your company can provide affordable mobile solutions to businesses that need them you'll find mobile consulting a rich business opportunity.
+
+According to Jamie Turner, founder of a company called The 60-Second Marketer, there will be ongoing need for mobile assistance.
+
+Research from the 60-Second Marketer indicates that there are more people on the planet who own a mobile device than who own a toothbrush, said Turner, who co-authored the new book Go Mobile (Wiley, January 2012) with Jeanne Hopkins. So it's safe to say that your prospects are using mobile. If you're in business, it's your job to be where your prospects are. Your prospects are in mobile right now.",
+        date: "28-07-2014 16:37:50",
+        votes: "525",
+        comments: [
+                    {
+                        commentedby: "",
+                        comment: ""
+                    }
+                  ]
+    }
+);
+
+db.ideas.insert (
+    {
+        ididea: "8d4f90eeea46d604a6410c9bd877f582",
+        author: "03b7bd2628051956aae7609adf435ad8",
+        authorname: "Laura Levesque",
+        title:  "Translator",
+        tags:   [
+                 "communication,",
+                 "culture,",
+                 "business"
+                ],
+        description: "There's no denying the global marketplace is growing and reaching beyond the borders of China and Mexico. All that cross-cultural communication is creating a growing need for translators, according to the U.S. Bureau of Labor Statistics’ Occupational Outlook Handbook, 2010-11 Edition. It predicts a greater demand for interpreters and translators resulting from the broadening of international ties and growth in the number of non-English speakers in the United States will result in a projected 22 percent increase in the number individuals employed in this profession.
+
+This translates into a big business opportunity for entrepreneurs who can bring foreign-language speakers together with businesses in need.",
+        date: "12-04-2014 23:06:36",
+        votes: "465",
+        comments: [
+                    {
+                        commentedby: "",
+                        comment: ""
+                    }
+                  ]
+    }
+);
+
+db.ideas.insert (
+    {
+        ididea: "52943b5f67de9529135a47b091faec95",
+        author: "93bda7f4bb6b4f77aa8a96d7af21c7ce",
+        authorname: "Javier Diaz",
+        title:  "Employee-monitoring services",
+        tags:   [
+                 "services,",
+                 "monitoring,",
+                 "business,"
+                 "productivity"
+                ],
+        description: "Employees are increasingly mobile. In fact, it is estimated there will be 1.3 billion mobile workers by 2015. So how are employers supposed to keep track of what their workers are doing? The answer provides myriad business opportunities for entrepreneurs. One company, Exaktime, recently debuted a mobile time clock. There are also vehicle-tracking time clocks and time-clock apps. But employers often don't have the staff or the time to manage all this new data and distill it to what is needed for payroll and billing.
+
+A company that could provide employee-monitoring services, as well as some additional outsourced human resources functions, would be in great demand right now.",
+        date: "16-05-2014 19:59:20",
+        votes: "300",
+        comments: [
+                    {
+                        commentedby: "",
+                        comment: ""
+                    }
+                  ]
+    }
+);
+
+db.ideas.insert (
+    {
+        ididea: "5f1c71645451c7a4d6aff27a78f4d1e9",
+        author: "f6a0d1e9eefa8ed5e10ab0ae9f223bd4",
+        authorname: "Laura Melendez",
+        title:  "Traveling salon",
+        tags:   [
+                 "beauty,",
+                 "business,",
+                 "home,"
+                 "services"
+                ],
+        description: "As people live longer, there's an increasing need for senior services of all sorts. And not all are related to health care. One such service, a mobile salon that travels to customers' residences to do their hair or nails, has nothing but growth potential. As aging baby boomers move into the senior citizen category, there will be a growing need for these mobile services that help keep boomers looking good without requiring them to make a trip to the salon.",
+        date: "05-11-2014 13:27:30",
+        votes: "200",
+        comments: [
+                    {
+                        commentedby: "",
+                        comment: ""
+                    }
+                  ]
+    }
+);

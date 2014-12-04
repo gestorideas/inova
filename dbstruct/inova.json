@@ -1,0 +1,22 @@
+use inova
+db.ideas.insert (
+    {
+        ididea: "",
+        author: "",
+	authorname: "",
+        title:  "",
+        tags:   [
+                 "",
+                 ""
+                ],
+        description: "",
+        date: "",
+	votes: "",
+        comments: [
+                    {
+                        commentedby: "",
+                        comment: ""
+                    }
+                  ]
+    }
+);
