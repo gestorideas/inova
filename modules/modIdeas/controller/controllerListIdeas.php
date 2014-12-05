@@ -18,7 +18,7 @@
 
             // Botones de accion sobre cada item de idea generado
             $outHTML .=
-                      "<td><a href='" . $field->ididea . "' class='btn btn-info btn-sm'>"
+                      "<td><a data-toggle='modal' data-target='#viewDetails' class='btn btn-info btn-sm'>"
                     . "<span class='glyphicon glyphicon-eye-open'></span>&nbsp;View details</a>"
                     . "<a href='" . $field->ididea . "' class='btn btn-primary btn-sm'>"
                     . "<span class='glyphicon glyphicon-pencil'></span>&nbsp;Edit idea</a>"
@@ -46,6 +46,35 @@
 
             $outHTML .=
                       "</td></tr>";
+
+
+
+            $outHTML .=
+                        "<div class='modal fade' id='viewDetails' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>"
+                        ."<div class='modal-dialog'>"
+                        ."<div class='modal-content'>"
+                        ."<div class='modal-header'>"
+                        ."<button type='button' class='close' data-dismiss='modal'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
+                        ."<h3 class='modal-title' id='myModalLabel'>". ucfirst($field->title) ."</h3>"
+                        ."</div>"
+                        ."<div class='modal-body'>"
+                        ."<p align='justify'>"
+                        .ucfirst($field->description)
+                        ."</p>"
+                        ."<dt>Date:</dt>"
+                        ."<dd>" . setCharSetHTML ( $field->date       ) . "</dd>"
+                        ."<dt>Tags:</dt><dd>";
+                        foreach ( $field->tags as $tag ) {
+                            $outHTML .= setCharSetHTML ( $tag );
+                        }
+            $outHTML .=
+                        "</div>"
+                        ."<div class='modal-footer'>"
+                        ."<button type='button' class='btn btn-primary btn-md' data-dismiss='modal'>Close</button>"
+                        ."</div>"
+                        ."</div>"
+                        ."</div>"
+                        ."</div>";
         }
     return $outHTML;
     }
