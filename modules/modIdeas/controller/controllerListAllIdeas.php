@@ -21,11 +21,12 @@
             $outHTML .=  "<td><span class='badge'>". $field->votes ."</span></td>";
             // Botones de accion sobre cada item de idea generado
             $outHTML .=
-                    "<td><form name='frmReviewIdea' id='frmReviewIdea' method='get' action='./mainpanel.php' role='form'>"
-                    ."<input type='hidden' id='action' name='action' value='4'/>"
-                    ."<input type='hidden' id='idparam' name='idparam' value='" . $field->ididea . "'/>"
-                    ."<input type='submit' id='btnReviewIdea' name='btnReviewIdea' value='View details' class='btn btn-info btn-sm'/>"
-                    ."</form></td>";
+                "<td><form name='frmReviewIdea' id='frmReviewIdea' method='get' action='./mainpanel.php' role='form'>"
+                ."<input type='hidden' id='action' name='action' value='4'/>"
+                ."<input type='hidden' id='idparam' name='idparam' value='" . $field->ididea . "'/>"
+                ."<button type='submit' id='btnReviewIdea' class='btn btn-info btn-sm'>"
+                ."<span class='glyphicon glyphicon-eye-open'></span>&nbsp;View details</button>"
+                ."</form></td>";
         }
     return $outHTML;
     }

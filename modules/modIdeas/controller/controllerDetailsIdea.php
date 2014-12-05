@@ -43,6 +43,24 @@
         }
         return $outHTML;
     }
+
+    function getComments ( $idIdea ) {
+        $MyIdea = new innovativeIdea ();
+        $outHTML ="";
+        $data = json_decode ( $MyIdea->getIdeaDetails ( $idIdea ) );
+
+        foreach ( $data as $field ) {
+            foreach ( $field->comments as $comment){
+                $outHTML .= '<div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">Commented by: '
+                    . $comment->commentedby . '</h3></div>';
+                $outHTML .= '<div class="panel-body">' . $comment->comment . '</div>';
+                $outHTML .= '<div class="panel-footer">Date of comment: '. $comment->date .'</div></div>';
+
+
+            }
+        }
+        return $outHTML;
+    }
     //..........................................................................
 
     //..........................................................................
