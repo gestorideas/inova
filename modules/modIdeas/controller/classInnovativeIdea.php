@@ -74,8 +74,10 @@ class innovativeIdea {
         $docIdeas           = $mongoDB->ideas;
 
         // Actualiza los datos
-        $toUpdate = array( "title" => $ideaTitle, "description" => $ideaDescription, "tags" => $ideaTags);
-        $docIdeas->update ( array ( "ididea" => $idIdea ), array( '$set' => $toUpdate ) );
+
+        $toUpdate = array( "title" => $ideaTitle, "description" => $ideaDescription, "tags" => array ($ideaTags) );
+        $docIdeas->update ( array ( "ididea" => $idIdea ),
+            array ( '$set' => $toUpdate ) );
         $connectionMongo->close (); // Cierra la conexion
     }
     //..........................................................................

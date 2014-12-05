@@ -19,6 +19,8 @@
                 $moduleToLoad = "register.php"; break;
             case 6: // Interfaz de compra de una idea de otro autor
                 $moduleToLoad = "buyidea.php"; break;
+            case 7: // Interfaz de compra de una idea de otro autor
+                $moduleToLoad = "editidea.php"; break;
         }
     return $moduleToLoad; // Muestra el contenido o la interfaz del modulo
     }

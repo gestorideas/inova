@@ -17,27 +17,38 @@
             }
 
             // Botones de accion sobre cada item de idea generado
+
+
             $outHTML .=
-                      "<td><a data-toggle='modal' data-target='#viewDetails' class='btn btn-info btn-sm'>"
-                    . "<span class='glyphicon glyphicon-eye-open'></span>&nbsp;View details</a>"
-                    . "<a href='" . $field->ididea . "' class='btn btn-primary btn-sm'>"
-                    . "<span class='glyphicon glyphicon-pencil'></span>&nbsp;Edit idea</a>"
-                    . "<a href='../controller/controllerDeleteIdea.php?ididea=" . $field->ididea . "' class='btn btn-danger btn-sm'>"
-                    . "<span class='glyphicon glyphicon-trash'></span>&nbsp;Delete idea</a>";
+                "<td><a data-toggle='modal' data-target='#viewDetails' class='btn btn-info btn-sm'>"
+                . "<span class='glyphicon glyphicon-eye-open'></span>&nbsp;View details</a>"
+                . "<td><form name='frmEditIdea_". $field->ididea ."' id='frmEditIdea_". $field->ididea ."'"
+                . " method='get' action='./mainpanel.php' role='form'>"
+                . "<input type='hidden' id='action' name='action' value='7'/>"
+                . "<input type='hidden' id='idparam' name='idparam' value='" . $field->ididea . "'/>"
+                . "<a href='#' class='btn btn-primary btn-sm' id='btnEditIdea_". $field->ididea ."'>"
+                . "<span class='glyphicon glyphicon-pencil'></span>&nbsp;Edit idea</a>"
+                . "</form>"
+                ."<script>$('#btnEditIdea_". $field->ididea ."').bind('click', function(event) {"
+                ."$('#frmEditIdea_". $field->ididea ."').submit(); });</script>"
+                . "</td>"
+                . "<td><a href='../controller/controllerDeleteIdea.php?ididea=" . $field->ididea . "' class='btn btn-danger btn-sm'>"
+                . "<span class='glyphicon glyphicon-trash'></span>&nbsp;Delete idea</a>";
+
 
             if ( $field->sold->flag == 0){
                 $outHTML .=
-                    "<a href='../controller/controllerSellIdea.php?ididea=" . $field->ididea . "' class='btn btn-success btn-sm'>"
-                    . "<span class='glyphicon glyphicon-euro'></span>&nbsp;Sell idea</a>";
+                    "<td><a href='../controller/controllerSellIdea.php?ididea=" . $field->ididea . "' class='btn btn-success btn-sm'>"
+                    . "<span class='glyphicon glyphicon-euro'></span>&nbsp;Sell idea</a></td>";
             }else{
                 if ( $field->sold->flag == 1){
                     $outHTML .=
-                        "<a href='../controller/controllerSellIdea.php?ididea=" . $field->ididea . "' class='btn btn-default btn-sm' disabled>"
-                        . "<span class='glyphicon glyphicon-euro'></span>&nbsp; On sale&nbsp;</a>";
+                        "<td><a href='../controller/controllerSellIdea.php?ididea=" . $field->ididea . "' class='btn btn-default btn-sm' disabled>"
+                        . "<span class='glyphicon glyphicon-euro'></span>&nbsp; On sale&nbsp;</a></td>";
                 }else{
                     $outHTML .=
-                        "<a href='../controller/controllerSellIdea.php?ididea=" . $field->ididea . "' class='btn btn-default btn-sm' disabled>"
-                        . "<span class='glyphicon glyphicon-euro'></span>&nbsp;&nbsp;&nbsp; Sold &nbsp;&nbsp;&nbsp;&nbsp;</a>";
+                        "<td><a href='../controller/controllerSellIdea.php?ididea=" . $field->ididea . "' class='btn btn-default btn-sm' disabled>"
+                        . "<span class='glyphicon glyphicon-euro'></span>&nbsp;&nbsp;&nbsp; Sold &nbsp;&nbsp;&nbsp;&nbsp;</a></td>";
                 }
 
             }
@@ -45,7 +56,7 @@
 
 
             $outHTML .=
-                      "</td></tr>";
+                      "</tr>";
 
 
 
