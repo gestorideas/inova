@@ -1,5 +1,45 @@
 <?php
     //..........................................................................
+    // Genera un modal de bootstrap 3
+    //
+    // @param $modalName - id del modal
+    // @param $title - titulo que aparecerá en el modal
+    // @param $body - Cuerpo del modal
+    // @param $acept - Texto del botón con link. False si no quiere que aparezca
+    // @param $cancel - Texto del botón que cierra el modal
+    // @param $acept_href - link del boton $accept. False si no quiere que aparezca
+    // @return string
+    //..........................................................................
+    function contructModal( $modalName, $title, $body, $acept, $cancel, $acept_href ){
+        $outHTML ="";
+        $outHTML .=
+            "<div class='modal fade' id='".$modalName."' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>"
+        ."<div class='modal-dialog'>"
+        ."<div class='modal-content'>"
+        ."<div class='modal-header'>"
+        ."<button type='button' class='close' data-dismiss='modal'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
+        ."<h3 class='modal-title' id='myModalLabel'>". $title ."</h3>"
+        ."</div>"
+        ."<div class='modal-body'>"
+        .$body
+        ."</div>"
+        ."<div class='modal-footer'>";
+        if ( $cancel != false ){
+            $outHTML .= "<button type='button' class='btn btn-primary btn-md' data-dismiss='modal'>".$cancel."</button>";
+        }
+        if ( $acept != false ){
+            $outHTML .= "<a class='btn btn-primary' href='". $acept_href ."' type='button' >".$acept."</a>";
+        }
+        $outHTML .=
+        "</div>"
+        ."</div>"
+        ."</div>"
+        ."</div>";
+        return $outHTML;
+
+    }
+
+    //..........................................................................
     // Genera el listado de ideas asociadas a un autor en particular, le da el
     // formato de salida HTML, y le devuelve al dashboard para visualizar
     //..........................................................................
@@ -17,10 +57,8 @@
             }
 
             // Botones de accion sobre cada item de idea generado
-
-
             $outHTML .=
-                "<td><a data-toggle='modal' data-target='#viewDetails' class='btn btn-info btn-sm'>"
+                "<td><a data-toggle='modal' data-target='#viewDetails_". $field->ididea ."' class='btn btn-info btn-sm'>"
                 . "<span class='glyphicon glyphicon-eye-open'></span>&nbsp;View details</a>"
                 . "<td><form name='frmEditIdea_". $field->ididea ."' id='frmEditIdea_". $field->ididea ."'"
                 . " method='get' action='./mainpanel.php' role='form'>"
@@ -38,54 +76,42 @@
 
             if ( $field->sold->flag == 0){
                 $outHTML .=
-                    "<td><a href='../controller/controllerSellIdea.php?ididea=" . $field->ididea . "' class='btn btn-success btn-sm'>"
+                    "<td><a data-toggle='modal' data-target='#SellDetails_". $field->ididea ."' class='btn btn-success btn-sm'>"
                     . "<span class='glyphicon glyphicon-euro'></span>&nbsp;Sell idea</a></td>";
             }else{
                 if ( $field->sold->flag == 1){
                     $outHTML .=
-                        "<td><a href='../controller/controllerSellIdea.php?ididea=" . $field->ididea . "' class='btn btn-default btn-sm' disabled>"
+                        "<td><a href='#' class='btn btn-default btn-sm' disabled>"
                         . "<span class='glyphicon glyphicon-euro'></span>&nbsp; On sale&nbsp;</a></td>";
                 }else{
                     $outHTML .=
-                        "<td><a href='../controller/controllerSellIdea.php?ididea=" . $field->ididea . "' class='btn btn-default btn-sm' disabled>"
+                        "<td><a href='#' class='btn btn-default btn-sm' disabled>"
                         . "<span class='glyphicon glyphicon-euro'></span>&nbsp;&nbsp;&nbsp; Sold &nbsp;&nbsp;&nbsp;&nbsp;</a></td>";
                 }
 
             }
 
+            $outHTML .= "</tr>";
 
-
-            $outHTML .=
-                      "</tr>";
-
-
-
-            $outHTML .=
-                        "<div class='modal fade' id='viewDetails' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>"
-                        ."<div class='modal-dialog'>"
-                        ."<div class='modal-content'>"
-                        ."<div class='modal-header'>"
-                        ."<button type='button' class='close' data-dismiss='modal'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
-                        ."<h3 class='modal-title' id='myModalLabel'>". ucfirst($field->title) ."</h3>"
-                        ."</div>"
-                        ."<div class='modal-body'>"
-                        ."<p align='justify'>"
+            $idModalViewDetails = "viewDetails_". $field->ididea;
+            $TitleModalViewDetails = ucfirst($field->title);
+            $BodyModalViewDetails = "<p align='justify'>"
                         .ucfirst($field->description)
                         ."</p>"
                         ."<dt>Date:</dt>"
-                        ."<dd>" . setCharSetHTML ( $field->date       ) . "</dd>"
+                        ."<dd>" . setCharSetHTML ( $field->date ) . "</dd>"
                         ."<dt>Tags:</dt><dd>";
                         foreach ( $field->tags as $tag ) {
-                            $outHTML .= setCharSetHTML ( $tag );
+                            $BodyModalViewDetails .= setCharSetHTML ( $tag );
                         }
-            $outHTML .=
-                        "</div>"
-                        ."<div class='modal-footer'>"
-                        ."<button type='button' class='btn btn-primary btn-md' data-dismiss='modal'>Close</button>"
-                        ."</div>"
-                        ."</div>"
-                        ."</div>"
-                        ."</div>";
+            $outHTML .= contructModal( $idModalViewDetails, $TitleModalViewDetails, $BodyModalViewDetails, false , "Close", "" );
+
+            $idModalSell = "SellDetails_". $field->ididea;
+            $TitleModalSell = "Sell ".ucfirst($field->title);
+            $BodyModalSell = "<input type='price' class='form-control' id='price' name='price' placeholder='Price €' required='required'>";
+            $linkModalSell = "../controller/controllerSellIdea.php?ididea=" . $field->ididea;
+            $outHTML .= contructModal( $idModalSell, $TitleModalSell, $BodyModalSell, "Sell" , "Close", $linkModalSell );
+
         }
     return $outHTML;
     }
