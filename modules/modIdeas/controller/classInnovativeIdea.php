@@ -198,14 +198,20 @@ class innovativeIdea {
     // flag = 1 Idea a la venta
     // flag = 2 Idea vendida
     //..........................................................................
-    public function buyIdea ( $idIdea, $idBuyer ) {
+    public function buyIdea ( $idIdea, $idBuyer, $name, $card_number, $payment_method, $security_code, $txtCommentEntrepreneur ) {
         // Establece la conexion a MongoDB
         $connectionMongo    = new MongoClient ( SERVER );
         $mongoDB            = $connectionMongo->selectDB ( DATABASE );
         $docIdeas           = $mongoDB->ideas;
 
-
-        $docIdeas->update ( array ( "ididea" => $idIdea ), array ( '$set' => array ( "sold.flag" => 2, "sold.idbuyer" => $idBuyer ) ) );
+        $paymentDetails     = array (
+            "name" => $name,
+            "creditCard" => $card_number,
+            "payment_method" => $payment_method,
+            "security_code" => $security_code,
+            "txtCommentEntrepreneur" => $txtCommentEntrepreneur
+        );
+        $docIdeas->update ( array ( "ididea" => $idIdea ), array ( '$set' => array ( "sold.flag" => 2, "sold.idbuyer" => $idBuyer, "sold.info" => $paymentDetails ) ) );
         $connectionMongo->close (); // Cierra la conexion
     }
     //..........................................................................

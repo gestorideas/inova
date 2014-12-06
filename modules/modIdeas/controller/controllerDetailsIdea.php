@@ -20,7 +20,11 @@
             foreach ( $field->tags as $tag ) {
                 $outHTML .= setCharSetHTML ( $tag );
             }
-            $outHTML .=  "</dd></dl>";
+
+            $outHTML .=  "<dt>Price:</dt>";
+            $outHTML .=  "<dd>" . setCharSetHTML ( $field->sold->price       ) . " €</dd>";
+            $outHTML .=  "</dd>";
+            $outHTML .=  "</dl>";
             $outHTML .=  "<p>". setCharSetHTML ( $field->description ) ."</p>";
 
 

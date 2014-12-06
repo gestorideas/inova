@@ -20,10 +20,29 @@
             foreach ( $field->tags as $tag ) {
                 $outHTML .= setCharSetHTML ( $tag );
             }
-            $outHTML .=  "</dd></dl>";
+            $outHTML .=  "</dd>";
+            $outHTML .=  "<dt>Price:</dt>";
+            $outHTML .=  "<dd>" . setCharSetHTML ( $field->sold->price       ) . " €</dd>";
+            $outHTML .=  "</dl>";
             $outHTML .=  "<p>". setCharSetHTML ( $field->description ) ."</p>";
         }
     return $outHTML;
+    }
+
+    //..........................................................................
+    // Genera los detalles asociados a el precio de una idea en particular,
+    // le da el formato de salida HTML, y le devuelve al dashboard para visualizar
+    //..........................................................................
+    function getDetailsPrice ( $idIdea ) {
+        $MyIdea = new innovativeIdea ();
+        $outHTML ="";
+        $data = json_decode ( $MyIdea->getIdeaDetails ( $idIdea ) );
+        $outHTML .=  "<dl class='dl-horizontal'>";
+        foreach ( $data as $field ) {
+            $outHTML .= "Are you sure that you want to buy the idea \"". $field->title . "\" for ". $field->sold->price. "€ ?";
+            $outHTML .=  "</dl>";
+        }
+        return $outHTML;
     }
     //..........................................................................
 

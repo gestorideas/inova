@@ -31,14 +31,7 @@
  <!-- Action Buttons -->
                                 <a class="btn btn-warning btn-sm" href="#commentspanel" onclick='return false' id="showcomments">
                                 <span class="glyphicon glyphicon glyphicon-tasks"></span>&nbsp;Show comments</a>
-                                <!--
-                                <a class="btn btn-warning btn-sm" href="#" >
-                                <span class="glyphicon glyphicon glyphicon-tasks"></span>&nbsp;Show comments</a>
-                                -->
                                 <a class="btn btn-success btn-sm" href="#reviews-anchor" id="open-review-box">
-                                <!--
-                                <span class="glyphicon glyphicon-comment"></span>&nbsp;Leave a review</a>
-                                -->
                                 <span class="glyphicon glyphicon-comment"></span>&nbsp;Leave a comment</a>
   <!-- REVIEW -->
                                 <div class="row" id="post-review-box" style="display:none;">
@@ -49,14 +42,6 @@
                                             <input id="ididea" name="ididea" type="hidden" value="<?php echo $idIdea; ?>">
                                             <textarea class="form-control animated" cols="50" id="new-review" name="comment"
                                                       placeholder="Enter your comment here..." rows="5"></textarea>
-
-
-                                        <!--
-                                        <form accept-charset="UTF-8" action="" method="post">
-                                            <input id="ratings-hidden" name="rating" type="hidden">
-                                            <textarea class="form-control animated" cols="50" id="new-review" name="comment"
-                                            placeholder="Enter your review here..." rows="5"></textarea>
-                                            -->
                                             <div class="text-left">
                                                 <div class="stars starrr" data-rating="0"><div>
                                                 <button class="btn btn-success btn-sm" type="submit">
