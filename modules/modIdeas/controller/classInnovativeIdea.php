@@ -179,7 +179,7 @@ class innovativeIdea {
     // flag = 1 Idea a la venta
     // flag = 2 Idea vendida
     //..........................................................................
-    public function sellIdea ( $idIdea ) {
+    public function sellIdea ( $idIdea, $price ) {
         // Establece la conexion a MongoDB
         $connectionMongo    = new MongoClient ( SERVER );
         $mongoDB            = $connectionMongo->selectDB ( DATABASE );
@@ -187,7 +187,7 @@ class innovativeIdea {
 
         // db.ideas.update( { "ididea" : $idIdea }, { '$set' : { 'sold.flag' : 1 } } )
 
-        $docIdeas->update ( array ( "ididea" => $idIdea ), array ( '$set' => array ( "sold.flag" => 1 ) ) );
+        $docIdeas->update ( array ( "ididea" => $idIdea ), array ( '$set' => array ( "sold.flag" => 1, "sold.price" => $price ) ) );
         $connectionMongo->close (); // Cierra la conexion
     }
     //..........................................................................
