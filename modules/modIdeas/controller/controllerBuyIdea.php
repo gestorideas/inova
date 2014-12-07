@@ -8,7 +8,7 @@
         
         // Captura los parametros del formulario
         $idIdea           = trim ( $_POST["ididea"] );
-        $name             = trim ( $_POST["name"] );
+        $name             = trim ( $_POST["name_cc"] );
         $card_number      = trim ( $_POST["card_number"] );
         $payment_method   = trim ( $_POST["payment_method"] );
         $security_code    = trim ( $_POST["security_code"] );
