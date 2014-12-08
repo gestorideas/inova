@@ -22,7 +22,7 @@ function get_profile( $userName ){
     $profile =  json_decode ( findUser ( $userName ) );
     $outHTML = "<form name=\"profileForm\" role=\"form\" class=\"profileForm\" method=\"post\" action=\"../../modUser/controller/controllerProfile.php\">";
     foreach ( $profile as $p ){
-        $outHTML .= create_form_field( "name", "name", "name", $p->name, "name");
+        $outHTML .= create_form_field( "name", "name", "name", $p->name, "Name");
         $outHTML .= create_form_field( "last_name_1", "last_name_1", "last_name_1", $p->last_name_1, "Last name");
         $outHTML .= create_form_field( "last_name_2", "last_name_2", "last_name_2", $p->last_name_2, "Last name");
         $outHTML .= create_form_field( "email", "email", "email", $p->email, "Email");
