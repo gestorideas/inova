@@ -74,7 +74,7 @@
                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">&nbsp;<?php session_start(); echo $_SESSION["username"];?>&nbsp;<strong class="caret"></strong></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="#"><i class="glyphicon glyphicon-user"></i>&nbsp;My Account</a>
+                                    <a href="./mainpanel.php?action=8"><i class="glyphicon glyphicon-user"></i>&nbsp;My Account</a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="glyphicon glyphicon-cog"></i>&nbsp;Settings</a>

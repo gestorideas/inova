@@ -21,6 +21,8 @@
                 $moduleToLoad = "buyidea.php"; break;
             case 7: // Interfaz de compra de una idea de otro autor
                 $moduleToLoad = "editidea.php"; break;
+            case 8: // Interfaz de compra de una idea de otro autor
+                $moduleToLoad = "../../modUser/views/profile.php"; break;
         }
     return $moduleToLoad; // Muestra el contenido o la interfaz del modulo
     }

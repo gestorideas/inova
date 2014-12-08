@@ -44,9 +44,7 @@ class InovaUser {
         $valueReturn = 0;
         $aDate        = date ( "d-m-Y H:i:s" );   // Fecha actual
         // Estructura los datos
-        echo $password;
         $hashPassword = crypt( $password );
-        echo $hashPassword;
         $aUser        = array (
             "_id"           =>  strtolower   ( $userName ),
             "password"      =>  $hashPassword,
@@ -80,5 +78,42 @@ class InovaUser {
         return $valueReturn;
     }
 
+    //..........................................................................
+    // Profile
+    //..........................................................................
+    public function findUser ( $userName ) {
+        // Establece la conexion a MongoDB
+        $connectionMongo    = new MongoClient ( SERVER );
+        $mongoDB            = $connectionMongo->selectDB ( DATABASE );
+        $docUsers           = $mongoDB->users;
 
+
+        $query = array( "_id" => $userName );
+        $users = $docUsers->find ( $query );
+        $valueReturn = json_encode ( iterator_to_array ( $users ) );
+
+        $connectionMongo->close (); // Cierra la conexion
+        return $valueReturn;
+    }
+    //..........................................................................
+    // Profile
+    //..........................................................................
+    public function updateUser ( $userName, $name, $last_name_1, $last_name_2, $email ) {
+        // Establece la conexion a MongoDB
+        $connectionMongo    = new MongoClient ( SERVER );
+        $mongoDB            = $connectionMongo->selectDB ( DATABASE );
+        $docUsers           = $mongoDB->users;
+
+        $toUpdate = array( "_id" => $userName );
+        $upgrade = array();
+        if ( $name != "") $upgrade["name"] = $name;
+        if ( $last_name_1 != "") $upgrade["last_name_1"] = $last_name_1;
+        if ( $last_name_2 != "") $upgrade["last_name_2"] = $last_name_2;
+        if ( $email != "") $upgrade["email"] = $email;
+
+        $query = array ( '$set' => $upgrade );
+        $docUsers->update ( $toUpdate, $query );
+
+        $connectionMongo->close (); // Cierra la conexion
+    }
 }
