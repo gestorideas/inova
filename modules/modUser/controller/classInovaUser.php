@@ -98,7 +98,7 @@ class InovaUser {
     //..........................................................................
     // Profile
     //..........................................................................
-    public function updateUser ( $userName, $name, $last_name_1, $last_name_2, $email ) {
+    public function updateUser ( $userName, $name, $last_name_1, $last_name_2, $email, $tags ) {
         // Establece la conexion a MongoDB
         $connectionMongo    = new MongoClient ( SERVER );
         $mongoDB            = $connectionMongo->selectDB ( DATABASE );
@@ -110,6 +110,7 @@ class InovaUser {
         if ( $last_name_1 != "") $upgrade["last_name_1"] = $last_name_1;
         if ( $last_name_2 != "") $upgrade["last_name_2"] = $last_name_2;
         if ( $email != "") $upgrade["email"] = $email;
+        if ( $tags != "") $upgrade["tags"] = array( $tags );
 
         $query = array ( '$set' => $upgrade );
         $docUsers->update ( $toUpdate, $query );

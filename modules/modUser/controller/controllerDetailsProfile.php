@@ -26,6 +26,13 @@ function get_profile( $userName ){
         $outHTML .= create_form_field( "last_name_1", "last_name_1", "last_name_1", $p->last_name_1, "Last name");
         $outHTML .= create_form_field( "last_name_2", "last_name_2", "last_name_2", $p->last_name_2, "Last name");
         $outHTML .= create_form_field( "email", "email", "email", $p->email, "Email");
+        $stringTags = "";
+        foreach ($p->tags as $tag){
+            $stringTags .= $tag;
+            $stringTags .= ", ";
+        }
+        $stringTags = substr($stringTags, 0, strlen($stringTags)-2);
+        $outHTML .= create_form_field( "tags", "tags", "tags", $stringTags, "Tags");
     }
     $outHTML .= "<div class=\"row\"><div class=\"col-md-12 text-right\"><input type=\"submit\" class=\"btn btn-primary btn-md login\" value=\"SAVE\" id=\"save\"/></div></div>";
     $outHTML .= "</form>";

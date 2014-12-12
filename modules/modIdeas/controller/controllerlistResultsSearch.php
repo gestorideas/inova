@@ -8,23 +8,25 @@ include "../../../modules/lib/libModals.php";
         include "classInnovativeIdea.php";
         $MyIdea = new innovativeIdea ();
         $outHTML ="";
-        $results = json_decode ( $MyIdea->searchIdeas ( $search, $idauthor ) );
-        $arrResults = count ( $results );
+        $results =  $MyIdea->searchIdeas ( $search, $idauthor );
+        $arrResults = count ( $results['result'] );
+
         if ( $arrResults > 0 ) {
-            $outHTML = "<span class='label label-danger'>Found:". $arrResults ." results</span>";
-            $data = array_shift ( $results );
+            $outHTML .= "<span class='label label-danger'>Found:". $arrResults ." results</span>";
+
             for ( $i = 0; $i < $arrResults; $i++ ) {
+
                 $outHTML .=  "<tr class='active'>";
-                $outHTML .=  "<td>" . setCharSetHTML ( $data[$i]->date       ) . "</td>";
-                $outHTML .=  "<td>" . setCharSetHTML ( $data[$i]->author     ) . "</td>";
-                $outHTML .=  "<td>" . setCharSetHTML ( $data[$i]->title      ) . "</td>";
-                $outHTML .=  "<td>" . setCharSetHTML ( $data[$i]->tags       ) . "</td>";
-                $outHTML .=  "<td><span class='badge'>". $data[$i]->votes ."</span></td>";
+                $outHTML .=  "<td>" .  $results['result'][$i]['date']       . "</td>";
+                $outHTML .=  "<td>" .  $results['result'][$i]['author']     . "</td>";
+                $outHTML .=  "<td>" .  $results['result'][$i]['title']      . "</td>";
+                $outHTML .=  "<td>" .  $results['result'][$i]['tags']       . "</td>";
+                $outHTML .=  "<td><span class='badge'>". $results['result'][$i]['votes'] ."</span></td>";
                 // Botones de accion sobre cada item de idea generado
                 $outHTML .=
                     "<td><form name='frmReviewIdea' id='frmReviewIdea' method='get' action='./mainpanel.php' role='form'>"
                     ."<input type='hidden' id='action' name='action' value='4'/>"
-                    ."<input type='hidden' id='idparam' name='idparam' value='" . $data[$i]->ididea . "'/>"
+                    ."<input type='hidden' id='idparam' name='idparam' value='" . $results['result'][$i]['ididea'] . "'/>"
                     ."<button type='submit' id='btnReviewIdea' class='btn btn-info btn-sm'>"
                     ."<span class='glyphicon glyphicon-eye-open'></span>&nbsp;View details</button>"
                     ."</form></td>";
