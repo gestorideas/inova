@@ -14,7 +14,7 @@ if ( !empty ( $_POST ) ) { // Si se recibe un parametro desde la URL
     return true; // Todo salio bien
 }
 else { // No hay un parametro valido
-    echo "HOLA";
+    header("Location: ../../modIdeas/views/mainpanel.php?action=1");
     return false; // Error o algo va mal
 }
 function updateUser ( $userName, $name, $last_name_1, $last_name_2, $email ) {
