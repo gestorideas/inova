@@ -31,7 +31,7 @@ include "../../../modules/lib/libModals.php";
                 ."<script>$('#btnEditIdea_". $field->ididea ."').bind('click', function(event) {"
                 ."$('#frmEditIdea_". $field->ididea ."').submit(); });</script>"
                 . "</td>"
-                . "<td><a href='../controller/controllerDeleteIdea.php?ididea=" . $field->ididea . "' class='btn btn-danger btn-sm'>"
+                . "<td><a data-toggle='modal' data-target='#ConfirmDeleteIdea_". $field->ididea ."' class='btn btn-danger btn-sm'>"
                 . "<span class='glyphicon glyphicon-trash'></span>&nbsp;Delete idea</a>";
 
 
@@ -74,6 +74,15 @@ include "../../../modules/lib/libModals.php";
                         ."<input type='hidden' id='ididea' name='ididea' value='". $field->ididea ."'/>";
             $linkModalSell = "../controller/controllerSellIdea.php";
             $outHTML .=contructModalFormPOST( $idModalSell, $TitleModalSell, $BodyModalSell, "Sell", "Close", $linkModalSell  );
+
+
+            $idModalConfirmDelete = "ConfirmDeleteIdea_". $field->ididea;
+            $TitleModalConfirmDelete = "Confirm Delete Idea ".ucfirst($field->title);
+            $BodyModalConfirmDelete =
+                "<p class='warning'>Are you sure that you want to delete this idea?</p>"
+                ."<input type='hidden' id='ididea' name='ididea' value='". $field->ididea ."'/>";
+            $linkModalConfirmDelete = "../controller/controllerDeleteIdea.php";
+            $outHTML .=contructModalFormPOST( $idModalConfirmDelete, $TitleModalConfirmDelete, $BodyModalConfirmDelete, "Delete", "Cancel", $linkModalConfirmDelete  );
 
         }
     return $outHTML;
