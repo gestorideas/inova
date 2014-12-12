@@ -14,6 +14,9 @@
             $outHTML .=  "<dd>" . setCharSetHTML ( $field->title      ) . "</dd>";
             $outHTML .=  "<dt>Author:</dt>";
             $outHTML .=  "<dd>" . setCharSetHTML ( $field->author ) . "</dd>";
+            $outHTML .=  "<dt>Email:</dt>";
+            $outHTML .=  "<dd><a href='mailto:" . $MyIdea->getMail ( $field->author ) . "'>"
+                         .  $MyIdea->getMail ( $field->author ) ."</a></dd>";
             $outHTML .=  "<dt>Date:</dt>";
             $outHTML .=  "<dd>" . setCharSetHTML ( $field->date       ) . "</dd>";
             $outHTML .=  "<dt>Tags:</dt><dd>";

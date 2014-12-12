@@ -15,6 +15,12 @@
             session_start();
             $_SESSION["ididea"] = $idparam;
         }
+        if ( !empty ( $_GET["search"] ) ) {
+            $search = $_GET["search"];
+            unset ( $_GET["search"] ); // Limpia la variable (por si el usuario cambia muchas veces, no se acumule el arreglo)
+            session_start();
+            $_SESSION["search"] = $search;
+        }
         unset ( $_GET["action"] ); // Limpia la variable (por si el usuario cambia muchas veces, no se acumule el arreglo)
         include "../controller/controllerGUI.php"; // Controlador de los modulos a cargar segun la accion recibida
         $showModule = buildModulesContents ( $action ); // Funcion declarada en << controllerGUI.php >>
@@ -64,9 +70,10 @@
                             <a href="./mainpanel.php?action=3"><i class="glyphicon glyphicon-cloud"></i>&nbsp;¿What's going on?</a>
                         </li>
                     </ul>
-                    <form class="navbar-form navbar-left" role="search">
+                    <form class="navbar-form navbar-left" role="search" action="" method="get">
                         <div class="form-group">
-                            <input class="form-control" type="text" placeholder="Look for ideas!!" >
+                            <input class="form-control" type="text" name = "search" placeholder="Look for ideas!!" >
+                            <input type="hidden" id="action" name="action" value="9"/>
                         </div><button type="submit" class="btn btn-success btn-sm">Search</button>
                     </form>
                     <ul class="nav navbar-nav navbar-right">

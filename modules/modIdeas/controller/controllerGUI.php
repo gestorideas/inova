@@ -23,6 +23,8 @@
                 $moduleToLoad = "editidea.php"; break;
             case 8: // Interfaz de compra de una idea de otro autor
                 $moduleToLoad = "../../modUser/views/profile.php"; break;
+            case 9: // Interfaz con los resultados de la busqueda
+                $moduleToLoad = "searchresults.php"; break;
         }
     return $moduleToLoad; // Muestra el contenido o la interfaz del modulo
     }

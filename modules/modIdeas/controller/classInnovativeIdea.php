@@ -216,5 +216,72 @@ class innovativeIdea {
         $connectionMongo->close (); // Cierra la conexion
     }
     //..........................................................................
+    // Obtiene el correo de un autor vinculado a una idea
+    //..........................................................................
+    public function getMail ( $idAuthor ) {
+    $valueReturn = array();
+
+        // Establece la conexion a MongoDB
+        $connectionMongo    = new MongoClient ( SERVER );
+        $mongoDB            = $connectionMongo->selectDB ( DATABASE );
+        $docUsers           = $mongoDB->users;
+
+        // Selecciona los datos
+        $data               = $docUsers->find ( array ( "_id" => $idAuthor ) );
+
+        // Codifica los datos en formato JSON para su estructuracion en la interfaz
+        $valueReturn = json_encode ( iterator_to_array ( $data ) );
+        $data = json_decode ( $valueReturn );
+        foreach ( $data as $field ) {
+            $valueReturn = strtolower ( trim ( $field->email ) );
+        }
+        $connectionMongo->close (); // Cierra la conexion
+    return $valueReturn;
+    }
+
+    //..........................................................................
+    public function searchIdeas ( $search, $idAuthor ) {
+    $valueReturn = array();
+
+        // Establece la conexion a MongoDB
+        $connectionMongo    = new MongoClient ( SERVER );
+        $mongoDB            = $connectionMongo->selectDB ( DATABASE );
+        $docIdeas           = $mongoDB->ideas;
+
+        $data               = $docIdeas->find ( array ( "author" => array ( '$ne' => $idAuthor ) ) );//find();
+        // Codifica los datos en formato JSON para su estructuracion
+        $valueReturn = json_encode ( iterator_to_array ( $data ) );
+        $data = json_decode ( $valueReturn );
+        $keywords = explode ( ' ', strtolower ( trim ( $search ) ) );
+        $arrKeywords = count ( $keywords );
+        $k = 0; $valuesTemp = array();
+        // Realiza una busqueda por comparacion de palabras claves
+        foreach ( $data as $field ) {
+            foreach ( $field->tags as $tag ) {
+                $tags = explode ( ',', strtolower ( trim ( $tag ) ) );
+                $arrTags = count ( $tags );
+                for ( $i = 0; $i < $arrKeywords; $i++ ) {
+                    for ( $j = 0; $j < $arrTags; $j++ ) {
+                        if ( strcmp ( $keywords[$i], $tags[$j] ) == 0 ) {
+                            $holding [] = array (
+                                'date'      =>  $field->date,
+                                'author'    =>  $field->author,
+                                'title'     =>  $field->title,
+                                'tags'      =>  $tag,
+                                'votes'     =>  $field->votes,
+                                'ididea'    =>  $field->ididea
+                            );
+                            $valuesTemp[$k] = $holding; $k++;
+                        }
+                    }
+                }
+           }
+        }
+        // Codifica los datos en formato JSON para su estructuracion en la interfaz
+        $valueReturn = json_encode ( $valuesTemp );
+        $connectionMongo->close (); // Cierra la conexion
+    return $valueReturn;
+   }
+
 }
 ?>

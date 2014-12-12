@@ -112,7 +112,7 @@ function error_message( $id_div, $div_class, $error_message){
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <img src="../../../img/csc.png" alt="csc">
+                        <img src="../../../img/ccvImage.png" alt="ccv">
                     </div>
                 </div>
                 <?php echo error_message( "m_sc", "col-md-12", "The security code is necessary" ); ?>
